@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Найти лучшие фото случайным опросом – Telegraph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Найти лучшие фото случайным опросом">
+    <meta property="og:description" content="Предположим, у нас имеется 150 фотографий. Например, из одной фотосессии одного человека в одном интерьере. 
+И мы хотим узнать какие фотографии будут самыми лучшими с точки зрения определенной аудитории. Например, заданного пола и возраста.
+Сбор данных.
+Будем выбирать случайные пары фото и показывать их аудитории. Таким образом мы наберем массив сравнений пар. Если результатов сравнений для пары несколько, выберем преобладающий. Теперь, можно построить орграф. Имея результат вида
+p1 &gt; p2,
+где p1 - это рейтинг…">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="Telegraph">
+    <meta property="article:published_time" content="2021-01-11T18:24:09+0000">
+    <meta property="article:modified_time" content="2021-01-13T19:50:51+0000">
+    <meta property="article:author" content="Alexey Roussanov">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Найти лучшие фото случайным опросом">
+    <meta name="twitter:description" content="Предположим, у нас имеется 150 фотографий. Например, из одной фотосессии одного человека в одном интерьере. 
+И мы хотим узнать какие фотографии будут самыми лучшими с точки зрения определенной аудитории. Например, заданного пола и возраста.
+Сбор данных.
+Будем выбирать случайные пары фото и показывать их аудитории. Таким образом мы наберем массив сравнений пар. Если результатов сравнений для пары несколько, выберем преобладающий. Теперь, можно построить орграф. Имея результат вида
+p1 &gt; p2,
+где p1 - это рейтинг…">
+    <meta name="twitter:image" content="">
+    <link rel="canonical" href="https://telegra.ph/Najti-luchshie-foto-sluchajnym-oprosom-01-11" />
+    <link rel="shortcut icon" href="/favicon.ico?1" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/images/favicon.png?1" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon_2x.png?1" sizes="32x32">
+    <link href="/css/quill.core.min.css" rel="stylesheet">
+    <link href="/css/core.min.css?44" rel="stylesheet">
+  </head>
+  <body>
+    <div class="tl_page_wrap">
+      <div class="tl_page">
+        <main class="tl_article">
+          <header class="tl_article_header">
+            <h1 dir="auto">Найти лучшие фото случайным опросом</h1>
+            <address dir="auto">
+              <a rel="author" href="https://t.me/jrojer" target="_blank">Alexey Roussanov</a><!--
+           --><time datetime="2021-01-11T18:24:09+0000">January 11, 2021</time>
+            </address>
+          </header>
+          <article id="_tl_editor" class="tl_article_content"><h1>Найти лучшие фото случайным опросом<br></h1><address><a href="https://t.me/jrojer" target="_blank">Alexey Roussanov</a><br></address><p>Предположим, у нас имеется <strong>150</strong> фотографий. Например, из одной фотосессии одного человека в одном интерьере. </p><p>И мы хотим узнать какие фотографии будут самыми лучшими с точки зрения определенной аудитории. Например, заданного пола и возраста.</p><h4 id="Сбор-данных.">Сбор данных.</h4><p>Будем выбирать случайные пары фото и показывать их аудитории. Таким образом мы наберем массив сравнений пар. Если результатов сравнений для пары несколько, выберем преобладающий. Теперь, можно построить <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph" target="_blank">орграф</a>. Имея результат вида</p><aside><strong>p1 &gt; p2,</strong></aside><p>где <strong><code>p1</code></strong> - это рейтинг первого фото, <strong><code>p2</code></strong> - второго, будем считать, что в графе есть ребро <strong><code>(p1,p2)</code></strong>.</p><p>Таким образом алгоритм собирает случайные данные и представляет их в виде орграфа.</p><h4 id="Идея-решения.">Идея решения.</h4><p>Найтие лучшие фото значит получить первые элементы отсортированной последовательности. Как же отсортировать последовательность, зная только набор сравнений случайных пар?</p><p>Для этого воспользуемся <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D0%BF%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0" target="_blank">топологической сортировкой</a>. (Но она может не дать результата, см. далее).</p><p>В орграфе, вершины выстраиваются цепочками:</p><figure><img src="/file/6964cdea09dcf4d42bc65.png"><figcaption>Пример орграфа</figcaption></figure><p>В нашем случае, более хорошие фотографии будут в начале цепочек, менее хорошие - в конце.</p><p>Топологическая сортировка поможет нам расставить фотографии так, что если, по нашим данным, фотография <strong>А</strong> лучше <strong>В</strong>, то <strong>А</strong> будет идти перед <strong>В</strong>. </p><p>Кажется, это то, что нам нужно&#33; Сделаем топологическу сортировку и выберем лучшие. Но будет ли это работать, если в данных есть ошибки? Давайте смоделируем.</p><h4 id="Модель.">Модель.</h4><p>Топологическая сортировка даст хороший результат только на данных с малым числом ошибок. Посмотрим подробнее.</p><p>Для начала сгенерируем <strong>150</strong> чисел (рейтинг фотографий), т.ч. они имеют нормальное распределение со средним <strong>μ = 50</strong> и стандартным отклонением <strong>σ = 50</strong>.</p><figure><img src="/file/bd074ad469dcb84a1a694.png"><figcaption>Нормальное распределение рейтинга фотографий, σ = 50, μ = 50</figcaption></figure><p>Получается, что у нас примерно <strong>70%</strong> средненьких фоток, <strong>15%</strong> - плохих и <strong>15%</strong> -  реально хороших.</p><p>В модели будем использовать сгенерированные данные рейтинга, а в реальности ответы будут приходить от реальных людей.</p><p>Пусть теперь каждому из <strong>2000 </strong>человек будет дана задача сравнить <strong>10</strong> пар фотографий. При этом <strong>1-20%</strong> человек ошибаются. Смоделируем опрос и построим орграф из выходных данных. </p><p>Нюанс. Если в данных есть ошибки, то в орграфе могут оказаться циклы&#33; От них можно избавиться, если последовательно находить циклы поиском в глубину и удалять в них одно любое ребро. Да, скорее всего удалится правильное, а не ошибочное, ребро, но для простоты пусть будет так.</p><p>Теперь, когда циклов нет, сделаем топологическую сортировку. В идеале фотографии с большим рейтингом будут иметь больший номер в последовательности. Но, посмотрим, что происходит на самом деле:</p><figure><img src="/file/b7c195a347b3de3dec9e8.png"><figcaption>Сравнение топологической сортировки (синия линия) с идеальной сортировкой (оранжевая линия) для случая e = 1 - 20% ошибок</figcaption></figure><p>Если ошибок <strong>e &lt; 1%</strong>,<strong> </strong>то результат топологической сортировки близок к идеальному. Но, если ошибка <strong>e &gt; 10%</strong>, то определить хорошие фотографии с помощью топологической сортировки нельзя. </p><h4 id="Рабочее-решение.">Рабочее решение.</h4><p>Хорошо. Топологическая сортировка нам не подходит. Что можно придумать ещё? Можно не пытаться сортировать все.</p><p>Найдем вершины графа, в которые не входят ребра (входная степень ноль). Т.е. те фотографии, лучше которых нет (таких в наборе, как правило одна или две). И также, рассмотрим вершины с величиной входной степени до <strong>12</strong>.</p><p>Оказалось, что этот подход работает неплохо. Запустим нашу модель <strong>100 </strong>раз с заданной долей ошибочных ответов <strong>20%</strong>. Получим результаты: </p><pre>№                  1     2     3     4     5     6
+P(score &gt; 100) [0.91, 0.88, 0.80, 0.78, 0.82, 0.80] 
+P(score &lt; 50)  [0.03, 0.02, 0.05, 0.05, 0.04, 0.02]
+
+№                  7     8     9    10    11    12
+P(score &gt; 100) [0.77, 0.65, 0.62, 0.61, 0.65, 0.58]
+P(score &lt; 50)  [0.02, 0.06, 0.07, 0.09, 0.10, 0.05]
+
+№                 13    14    15    16
+P(score &gt; 100) [0.63, 0.63, 0.55, 0.46]
+P(score &lt; 50)  [0.05, 0.08, 0.09, 0.11]
+</pre><p>В таблице преведены номера вершин, в порядке возрастания входной степени, вероятность получить очень хорошую (score &gt; <strong>100</strong>) фотографию и вероятность получить плохую фотографию (score &lt; <strong>50</strong>).</p><p>Из таблицы видно, что мы можем выделить из набора фотографий <strong>10%</strong>, которые будут неплохими с вероятностью <strong>90%</strong>. И <strong>3% </strong>фотографий, которые будут лучшими с вероятностью <strong>80%</strong>. </p><p>Таким образом, найдено приемлемое решение задачи, с помощью сортировки по величене входной степени.</p><p>Возникает вопрос. Как выгладит график для сортировки по величине входной степени?</p><figure><img src="/file/0f4025b6ed545249c23cc.png"><figcaption>Сравнение сортировки по величине входной степени, топологической и идеальной, для случая e = 20% ошибок</figcaption></figure><p>Визуально заметно, что сортировка по величине входной степени ближе к идеальной, чем топологическая.</p><p>P.S. Какие будут вероятности <code>P(score &gt; 100)</code> и <code>P(score &lt; 50)</code> для случая топологической сортировки, автор не выяснял.</p><h4 id="Итог.">Итог.</h4><p>С помощью случайного опроса можно найти лучшие из набора объектов (в нашем примере фотографий) и, при условии малой доли ошибок, даже отсортировать данные. </p><p><br></p><p><br></p></article>
+          <div id="_tl_link_tooltip" class="tl_link_tooltip"></div>
+          <div id="_tl_tooltip" class="tl_tooltip">
+            <div class="buttons">
+              <span class="button_hover"></span>
+              <span class="button_group"><!--
+             --><button id="_bold_button"></button><!--
+             --><button id="_italic_button"></button><!--
+             --><button id="_link_button"></button><!--
+           --></span><!--
+           --><span class="button_group"><!--
+             --><button id="_header_button"></button><!--
+             --><button id="_subheader_button"></button><!--
+             --><button id="_quote_button"></button><!--
+           --></span>
+            </div>
+            <div class="prompt">
+              <span class="close"></span>
+              <div class="prompt_input_wrap"><input type="url" class="prompt_input" /></div>
+            </div>
+          </div>
+          <div id="_tl_blocks" class="tl_blocks">
+            <div class="buttons">
+              <button id="_image_button"></button><!--
+           --><button id="_embed_button"></button>
+            </div>
+          </div>
+          <aside class="tl_article_buttons">
+            <div class="account account_top"></div>
+            <button id="_edit_button" class="button edit_button">Edit</button><!--
+         --><button id="_publish_button" class="button publish_button">Publish</button>
+            <div class="account account_bottom"></div>
+            <div id="_error_msg" class="error_msg"></div>
+          </aside>
+        </main>
+      </div>
+    </div>
+    <div id="_tl_alerts" class="tl_alerts"></div>
+<div id="commento"></div><script defer src="https://cdn.commento.io/js/commento.js"></script>
+<script> window.onload = function(ev){document.getElementById("commento").classList.add("tl_page_wrap");};</script>
+  </body>
+</html>
