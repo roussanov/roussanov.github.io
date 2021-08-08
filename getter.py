@@ -34,11 +34,8 @@ def get_all_image_paths(line):
     return re.findall("<img src=\"(/file/.+?.)\"", line)
 
 
-def contains_body_end(line):
-    return "</body>" in line
-
-def contains_address_end(line):
-    return "</address>" in line
+def contains_end_tag(tag, line):
+    return ("</"+tag+">") in line
 
 
 def modify_page_content(text):
@@ -49,12 +46,14 @@ def modify_page_content(text):
             continue
         for image_path in get_all_image_paths(line):
             save_image(image_path)
-        if contains_body_end(line):
+        if contains_end_tag('body', line):
             new_lines.append(r'<script defer src="https://roussanov-github-io-commento.herokuapp.com/js/commento.js"></script><div id="commento"></div>')
             new_lines.append(r'<script> window.onload = function(ev){document.getElementById("commento").classList.add("tl_page_wrap");};</script>')
-        if contains_address_end(line) and not more_articles_line_printed:
+        if contains_end_tag('address', line) and not more_articles_line_printed:
             new_lines.append(r'<a rel="" href="https://roussanov.github.io/" target="">| More articles</a>')
             more_articles_line_printed = True
+        if contains_end_tag('head', line):
+            new_lines.append(r'<link href="/css/extra.css" rel="stylesheet">')
         new_lines.append(line)
     return "\n".join(new_lines)
 

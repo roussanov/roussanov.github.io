@@ -1,0 +1,18 @@
+#commento-submit-button-root {
+    background-color : black
+}
+.commento-avatar {
+    background-color : black
+}
+#commento-mod-tools::before {
+    color : black
+}
+#commento-sort-policy-score-desc {
+    color : black
+}
+#commento-sort-policy-creationdate-desc {
+    color : black
+}
+#commento-sort-policy-creationdate-asc {
+    color : black
+}
