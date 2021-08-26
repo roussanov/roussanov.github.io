@@ -8,6 +8,7 @@ pages = [
     "https://telegra.ph/Model-i-algoritm-V-chem-raznica-04-11",
     "https://telegra.ph/Binary-search-Cheat-sheet-05-17",
     "https://telegra.ph/Princip-ehnergeticheskoj-sbalansirovannosti-08-06",
+    "https://telegra.ph/Otnosheniya-Budushchee-i-kriterii-08-25",
     "https://telegra.ph/b-logn-08-08", # index.html
 ]
 
